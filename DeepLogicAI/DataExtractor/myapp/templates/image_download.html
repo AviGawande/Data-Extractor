@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block title %}Image Download{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="mt-5 mb-4 text-center">Image Data CSV Download</h2>
+            <div class="text-center">
+                <a href="{{ csv_url }}" class="btn btn-primary">Download CSV</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

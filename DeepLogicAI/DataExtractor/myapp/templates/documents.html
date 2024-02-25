@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+
+{% block title %} PDF Data Extraction {% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-4">Upload PDF for Data Extraction</h5>
+                    <form id="pdfForm" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="pdfInput" class="text-secondary">Choose a PDF File:</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="pdfInput" name="pdfInput" onchange="displaySelectedFile()">
+                                <label class="custom-file-label" for="pdfInput" id="pdfInputLabel">Choose file</label>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary px-4">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {% if download_link %}
+            <div class="text-center mt-4">
+                <a href="{{ download_link }}" class="btn btn-success">Download Resulting File</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+    function displaySelectedFile() {
+        var fileInput = document.getElementById('pdfInput');
+        var fileInputLabel = document.getElementById('pdfInputLabel');
+        fileInputLabel.innerText = fileInput.files[0].name;
+    }
+</script>
+{% endblock %}

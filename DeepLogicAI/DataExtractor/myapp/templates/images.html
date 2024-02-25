@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block title %} Images Data Extraction {% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-4">Upload Image for Data Extraction</h5>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="imageInput" class="text-secondary">Choose an Image File:</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="imageInput" name="imageInput" onchange="displaySelectedFile()">
+                                <label class="custom-file-label" id="imageInputLabel" for="imageInput">Choose file</label>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary px-4">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function displaySelectedFile() {
+        var fileInput = document.getElementById('imageInput');
+        var fileInputLabel = document.getElementById('imageInputLabel');
+        fileInputLabel.innerText = fileInput.files[0].name;
+    }
+</script>
+{% endblock %}

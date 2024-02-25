@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block title %} Data Extractor {% endblock %}
+
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">File Options</h5>
+            <p class="card-text">Choose the type of file you want to upload:</p>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <a href="{% url 'images' %}" class="btn btn-primary btn-block">Images</a>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <a href="{% url 'documents' %}" class="btn btn-primary btn-block">PDF</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a type="submit" class="btn btn-primary btn-block">Submit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
